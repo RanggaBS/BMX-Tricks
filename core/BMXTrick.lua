@@ -162,16 +162,15 @@ function BMXTrick:Init()
   end
 end
 
-local allowMidAir
 ---@return boolean
 function BMXTrick:CanPerformInMidAir()
-  allowMidAir = self.config:GetSettingValue(Enum.Config.ALLOW_MID_AIR) --[[@as boolean]]
+  local allowMidAir = self.config:GetSettingValue(Enum.Config.ALLOW_MID_AIR) --[[@as boolean]]
   return allowMidAir or not Util.MePlaying("HOP")
 end
 
 ---@return boolean
 function BMXTrick:CanDoTricks()
-  return (not BMX_TRICKS.IS_BULLY_AE and not IsConsoleActive() or true)
+  return (not Util.IsBullyAE() and not IsConsoleActive() or true)
     and PlayerIsInAnyVehicle()
     and self:CanPerformInMidAir()
     and self:CanDoTricksOnBike(VehicleFromDriver(gPlayer))
@@ -199,10 +198,11 @@ end
 ---@param keyData { key: string, keyCombination: string }
 ---@param handler TrickHandler
 function BMXTrick:RegisterTrick(trickName, keyData, handler)
-  self.trickDatas[trickName] = {}
-  self.trickDatas[trickName].key = keyData.key
-  self.trickDatas[trickName].keyCombination = keyData.keyCombination
-  self.trickDatas[trickName].handler = handler
+  self.trickDatas[trickName] = {
+    key = keyData.key,
+    keyCombination = keyData.keyCombination,
+    handler = handler,
+  }
 end
 
 -- -------------------------------------------------------------------------- --
@@ -231,11 +231,6 @@ function BMXTrick:CheckInitialTrickInput()
       local handler = trickData.handler:GetInitialTrickHandler()
       handler(self.config)
 
-      -- Fix Bully AE touchscreen cannot do stoppie
-      -- if not self:GetAppropriateTrickPlayingHandler(trickData.handler) then
-      --   return
-      -- end
-
       self:SetTrickState(Enum.TrickState.Playing)
       break
     end
@@ -250,10 +245,7 @@ function BMXTrick:HandlePlayingState()
   local eventEnum = trickData.handler:GetEnumEvents()
 
   local handler = self:GetAppropriateTrickPlayingHandler(trickData.handler)
-  if not handler then
-    -- self:SetTrickState(Enum.TrickState.Idle)
-    return
-  end
+  if not handler then return end
 
   self:UpdateAllTrickEventData()
   self:EmitTrickEvent(
@@ -419,25 +411,29 @@ function BMXTrick:UpdateTrickEventData(key, value)
 end
 
 function BMXTrick:UpdateAllTrickEventData()
-  self.trickEventData.trickName = self.currentTrick
-  self.trickEventData.trickStartTime = self.trickStartTime
-  self.trickEventData.actualTrickStartTime = self.actualTrickStartTime
-  self.trickEventData.lastTrickPlayed = self.lastTrickPlayed
+  local eventData = self.trickEventData
+
+  eventData.trickName = self.currentTrick
+  eventData.trickStartTime = self.trickStartTime
+  eventData.actualTrickStartTime = self.actualTrickStartTime
+  eventData.lastTrickPlayed = self.lastTrickPlayed
 
   if
     self.lastTrickState == Enum.TrickState.Idle
     and self.trickState == Enum.TrickState.Initial
   then
-    self.trickEventData.startPosition = { PlayerGetPosXYZ() }
-    self.trickEventData.startHeading = PedGetHeading(gPlayer) --[[@as number]]
+    eventData.startPosition[1], eventData.startPosition[2], eventData.startPosition[3] =
+      PlayerGetPosXYZ()
+    eventData.startHeading = PedGetHeading(gPlayer) --[[@as number]]
 
     --
   elseif
     self.lastTrickState == Enum.TrickState.Initial
     and self.trickState == Enum.TrickState.Playing
   then
-    self.trickEventData.actualStartPosition = { PlayerGetPosXYZ() }
-    self.trickEventData.actualStartHeading = PedGetHeading(gPlayer) --[[@as number]]
+    eventData.actualStartPosition[1], eventData.actualStartPosition[2], eventData.actualStartPosition[3] =
+      PlayerGetPosXYZ()
+    eventData.actualStartHeading = PedGetHeading(gPlayer) --[[@as number]]
 
     --
   elseif
@@ -458,8 +454,9 @@ function BMXTrick:UpdateAllTrickEventData()
     self.lastTrickState == Enum.TrickState.Playing
     and self.trickState == Enum.TrickState.End
   then
-    self.trickEventData.endTrickPosition = { PlayerGetPosXYZ() }
-    self.trickEventData.endHeading = PedGetHeading(gPlayer) --[[@as number]]
+    eventData.endTrickPosition[1], eventData.endTrickPosition[2], eventData.endTrickPosition[3] =
+      PlayerGetPosXYZ()
+    eventData.endHeading = PedGetHeading(gPlayer) --[[@as number]]
   end
 end
 
@@ -487,11 +484,10 @@ function BMXTrick:GetConfig()
   return self.config
 end
 
-local bmxOnly
 ---@param vehicle integer
 ---@return boolean
 function BMXTrick:CanDoTricksOnBike(vehicle)
-  bmxOnly = self.config:GetSettingValue(Enum.Config.BMX_ONLY)
+  local bmxOnly = self.config:GetSettingValue(Enum.Config.BMX_ONLY) --[[@as boolean]]
   return (bmxOnly and Util.IsBMX(vehicle))
     or (not bmxOnly and Util.IsBike(vehicle))
 end
