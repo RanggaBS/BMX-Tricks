@@ -263,16 +263,17 @@ function BMXTrick:HandlePlayingState()
   )
 
   ---@type boolean?
-  local continue = true
-  while continue do
+  local continue
+  repeat
     Wait(0)
     continue = handler(self.config)
+    if continue ~= true then break end -- Don't trigger event when returns false|nil
     self:EmitTrickEvent(
       Enum.Event.OnTrickUpdate,
       eventEnum.playing,
       self.trickEventData
     )
-  end
+  until continue ~= true
 
   self:EmitTrickEvent(
     Enum.Event.OnTrickUpdate,
@@ -299,16 +300,17 @@ function BMXTrick:HandleFreezeState()
   )
 
   ---@type TrickHandler_FreezeHandlerReturnValue
-  local goback = nil
-  while goback == nil do
+  local goback
+  repeat
     goback = handler(self.config)
+    if goback ~= nil then break end
     self:EmitTrickEvent(
       Enum.Event.OnTrickFreeze,
       eventEnum.freeze,
       self.trickEventData
     )
     Wait(0)
-  end
+  until goback ~= nil
 
   self:EmitTrickEvent(
     Enum.Event.OnTrickFreezeEnd,
