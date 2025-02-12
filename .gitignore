@@ -1,0 +1,26 @@
+# Me stuff
+_DEV
+
+# Type definitions, for code completion
+types
+
+# Compiled file stuff
+_compiled
+
+# Release file stuff
+_release
+
+# Act file stuff
+act/DB
+act/TEMPLATES
+act/*.py
+# Ignore the compiled file
+act/*.cat
+
+# Documentations (ignored, not finished)
+docs
+
+# Images
+_media
+# paint.net project file
+_media/*.pdn
