@@ -153,73 +153,9 @@ function main()
     Wait(0)
   end
 
-  -- DEBUG: Spawn bike
-  --[[ local x, y, z = PedGetOffsetInWorldCoords(gPlayer, 0, 1, 0)
-  VehicleCreateXYZ(277, x, y, z) ]]
-
-  -- DEBUG: Dress up Jimmy
-  --[[ ClothingSetPlayer(0, "SP_BikeHelmet") -- Head
-  ClothingSetPlayer(1, "R_Sweater4") -- Torso
-  ClothingSetPlayer(4, "B_Pants7") -- Leg
-  ClothingSetPlayer(5, "P_Sneakers1") -- Feet
-  ClothingBuildPlayer() -- Apply clothing ]]
-
   Init()
 
   local bmxTrick = BMX_TRICKS.GetSingleton()
-
-  -- ------------------------------------------------------------------------ --
-  -- DEBUG: Speed                                                             --
-  -- ------------------------------------------------------------------------ --
-
-  --[[ local Util = BMX_TRICKS.Util
-  function _G._LOREM()
-    local speed
-    while true do
-      Wait(0)
-      speed = math.floor(Util.ToKmPerHour(Util.GetBikeSpeed()))
-      TutorialShowMessage(tostring(speed), 1000, true)
-    end
-  end
-  CreateThread("_LOREM") ]]
-
-  -- ------------------------------------------------------------------------ --
-  -- DEBUG: Hide HUD                                                          --
-  -- ------------------------------------------------------------------------ --
-
-  --[[ function _G._LOREM_IPSUM_DOLOR_SIT_AMET()
-    local huds = { 0, 4, 11 }
-    local hour, minute = ClockGet()
-    while 1 do
-      Wait(0)
-      -- Hide clock
-      hour, minute = ClockGet()
-      if not ClockIsPaused() or (hour ~= 16 and minute ~= 0) then
-        PauseGameClock()
-        ClockSet(16, 0)
-      end
-
-      -- Hide HUDs
-      for _, hud in ipairs(huds) do
-        if HUDComponentGetVisibility(hud) then
-          ToggleHUDComponentVisibility(hud, false)
-        end
-      end
-    end
-  end
-  CreateThread("_LOREM_IPSUM_DOLOR_SIT_AMET") ]]
-
-  -- ------------------------------------------------------------------------ --
-  -- DEBUG: FOV 60 Degree                                                     --
-  -- ------------------------------------------------------------------------ --
-
-  --[[ function _G.FOV60()
-    while 1 do
-      Wait(0)
-      if CameraGetFOV() ~= 60 then CameraSetFOV(60) end
-    end
-  end
-  CreateThread("FOV60") ]]
 
   while true do
     Wait(0)
