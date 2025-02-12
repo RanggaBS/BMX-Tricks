@@ -2,13 +2,17 @@
 local Util = {}
 
 -- -------------------------------------------------------------------------- --
--- Methods                                                                    --
+-- Game Platform                                                              --
 -- -------------------------------------------------------------------------- --
 
 ---@return boolean
 function Util.IsBullyAE()
   return type(_G.PlayerGetUsingTouchScreen) == "function"
 end
+
+-- -------------------------------------------------------------------------- --
+-- Script Loading                                                             --
+-- -------------------------------------------------------------------------- --
 
 ---@param dir string
 ---@param filename string
@@ -40,6 +44,10 @@ function Util.LoadScripts(...)
   end
 end
 
+-- -------------------------------------------------------------------------- --
+-- Configuration                                                              --
+-- -------------------------------------------------------------------------- --
+
 ---@param config userdata
 ---@param key string
 ---@param defaultValue any
@@ -52,34 +60,46 @@ function Util.GetRealConfigValue(config, key, defaultValue)
   return func(config, key, defaultValue)
 end
 
+-- -------------------------------------------------------------------------- --
+-- Vehicle                                                                    --
+-- -------------------------------------------------------------------------- --
+
+local bikes = {
+  [272] = true, -- Green BMX
+  [273] = true, -- Brown BMX
+  [274] = true, -- Crap BMX
+  [277] = true, -- Blue BMX
+  [278] = true, -- Red BMX
+  [279] = true, -- Bicycle
+  [280] = true, -- Mountain bike
+  [281] = true, -- Lady bike
+  [282] = true, -- Racer bike
+  [283] = true, -- Aquaberry bike
+}
+
 ---@param vehicle integer
 ---@return boolean
 function Util.IsBike(vehicle)
-  return ({
-    [272] = true, -- Green BMX
-    [273] = true, -- Brown BMX
-    [274] = true, -- Crap BMX
-    [277] = true, -- Blue BMX
-    [278] = true, -- Red BMX
-    [279] = true, -- Bicycle
-    [280] = true, -- Mountain bike
-    [281] = true, -- Lady bike
-    [282] = true, -- Racer bike
-    [283] = true, -- Aquaberry bike
-  })[VehicleGetModelId(vehicle)] or false
+  return bikes[VehicleGetModelId(vehicle)] or false
 end
+
+local bmxs = {
+  [272] = true, -- Green BMX
+  [273] = true, -- Brown BMX
+  [274] = true, -- Crap BMX
+  [277] = true, -- Blue BMX
+  [278] = true, -- Red BMX
+}
 
 ---@param vehicle integer
 ---@return boolean
 function Util.IsBMX(vehicle)
-  return ({
-    [272] = true, -- Green BMX
-    [273] = true, -- Brown BMX
-    [274] = true, -- Crap BMX
-    [277] = true, -- Blue BMX
-    [278] = true, -- Red BMX
-  })[VehicleGetModelId(vehicle)] or false
+  return bmxs[VehicleGetModelId(vehicle)] or false
 end
+
+-- -------------------------------------------------------------------------- --
+-- Animation                                                                  --
+-- -------------------------------------------------------------------------- --
 
 ---@return boolean
 function Util.IsDoingTricks()
@@ -133,20 +153,20 @@ function Util.ForcePlayActionNode(ped, actionNode, actFile)
   local maxAttempt = 10
   for attempt = 1, maxAttempt do
     PedSetActionNode(ped, actionNode, actFile)
-    if PedIsPlaying(ped, actionNode, true) then
-      return true, attempt
-    end
+    if PedIsPlaying(ped, actionNode, true) then return true, attempt end
   end
   return PedIsPlaying(ped, actionNode, true), maxAttempt
 end
+
+-- -------------------------------------------------------------------------- --
+-- Pedestrian                                                                 --
+-- -------------------------------------------------------------------------- --
 
 ---@param vehicle integer
 ---@return integer? ped
 function Util.GetDriverFromVehicle(vehicle)
   for _, ped in { PedFindInAreaXYZ(0, 0, 0, 99999) } do
-    if PedIsValid(ped) and VehicleFromDriver(ped) == vehicle then
-      return ped
-    end
+    if PedIsValid(ped) and VehicleFromDriver(ped) == vehicle then return ped end
   end
   return nil
 end
@@ -156,9 +176,9 @@ function Util.ToKmPerHour(meterPerSecond)
   return meterPerSecond * 3.6
 end
 
--- local MOVEMENT_HORIZONTAL = 16
--- local MOVEMENT_VERTICAL = 17
--- local PLAYER1_CONTROLLER = 0
+-- -------------------------------------------------------------------------- --
+-- Input                                                                      --
+-- -------------------------------------------------------------------------- --
 
 ---@return number
 function Util.GetHorizontalStickValue()
@@ -189,9 +209,7 @@ function Util.IsStickConditionJustMet(uniqueKey, stickId, condition)
     return true
   end
 
-  if not isConditionMet then
-    prevStateMap[uniqueKey] = false
-  end
+  if not isConditionMet then prevStateMap[uniqueKey] = false end
 
   return false
 end
@@ -277,8 +295,6 @@ function _G.TF_VehicleSpeed()
   while true do
     Wait(0)
 
-    -- t.currentTime = GetTimer()
-
     allVehicles = VehicleFindInAreaXYZ(0, 0, 0, 99999)
     if allVehicles then
       for _, vehicle in ipairs(allVehicles) do
@@ -304,11 +320,8 @@ function _G.TF_VehicleSpeed()
     end
   end
 end
-if BMX_TRICKS.IS_BULLY_AE then
-  BMX_TRICKS.T_VehicleSpeed = CreateThread("TF_VehicleSpeed")
-else
-  BMX_TRICKS.T_VehicleSpeed = CreateThread(TF_VehicleSpeed)
-end
+local argument = BMX_TRICKS.IS_BULLY_AE and "TF_VehicleSpeed" or TF_VehicleSpeed
+BMX_TRICKS.T_VehicleSpeed = CreateThread(argument)
 
 -- -------------------------------------------------------------------------- --
 -- Save to Global Variable                                                    --
