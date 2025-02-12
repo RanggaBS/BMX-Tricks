@@ -379,6 +379,12 @@ end
 function BMXTrick:EmitTrickEvent(trickEvent, currentTrickEvent, ...)
   self.eventManager:Emit(trickEvent, unpack(arg))
   self.eventManager:Emit(currentTrickEvent, unpack(arg))
+
+  if not Util.IsBullyAE() then
+    local prefix = "BMXTricks:"
+    RunLocalEvent(prefix .. trickEvent, unpack(arg))
+    RunLocalEvent(prefix .. currentTrickEvent, unpack(arg))
+  end
 end
 
 -- -------------------------------------------------------------------------- --
