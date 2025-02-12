@@ -72,7 +72,7 @@ BMX_TRICKS.USER_CONFIG = {
   POST_FRONTNUDGE_ANIM = false,
 
   -- Play the front wheel land animation
-  POST_STOPPIE_ANIM = false,
+  POST_STOPPIE_ANIM = true,
 
   -- Play the front wheel lift animation
   PRE_WHEELIE_ANIM = true,
