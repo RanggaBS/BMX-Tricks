@@ -1,7 +1,3 @@
-# ---------------------------------------------------------------------------- #
-# Original                                                                     #
-# ---------------------------------------------------------------------------- #
-
 Bank Bikes
 {
 	ConditionGroup
@@ -24172,9 +24168,15 @@ Bank Bikes
 		}
 	}
 
-  # -------------------------------------------------------------------------- #
-  # Added a Bank to store all the Nodes                                        #
-  # -------------------------------------------------------------------------- #
+	# -------------------------------------------------------------------------- #
+	# Store in a separate bank                                                   #
+	#                                                                            #
+	# Must be placed at the very bottom!                                         #
+	# Otherwise, Jimmy will play the bike landing animation when he wants to get #
+	#	on the bike.                                                               #
+	#                                                                            #
+	# Delete this comment notes if you want to convert this file to `.cat`       #
+	# -------------------------------------------------------------------------- #
 
 	Bank BMXTricks
 	{
