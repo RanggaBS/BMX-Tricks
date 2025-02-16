@@ -4,6 +4,8 @@ Mod author: RBS ID
 
 [![thumbnail](https://img.youtube.com/vi/nCHdeTbna2Y/maxresdefault.jpg)](https://youtu.be/nCHdeTbna2Y "Bully - BMX Tricks Mod Trailer")
 
+[Watch on YouTube](https://youtu.be/nCHdeTbna2Y)
+
 ## Description
 
 Bringing back the cut BMX trick feature.
@@ -83,6 +85,8 @@ Scripts/
 ## How to Tricks
 
 [![thumbnail](https://img.youtube.com/vi/vGITFgxbYRA/maxresdefault.jpg)](https://youtu.be/vGITFgxbYRA "Bully - BMX Tricks Mod Controls")
+
+[Watch on YouTube](https://youtu.be/vGITFgxbYRA)
 
 ## Links
 
