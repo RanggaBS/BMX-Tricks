@@ -29,17 +29,22 @@ Bully Anniversary Edition touchscreen users are also supported. This mod also fi
 ### Bully Scholarship Edition
 
 1. Install the latest version of Derpy Script Loader
-2. Move the `BMXTricks` folder to `(bully_game_directory)/_derpy_script_loader/scripts/(here)`
-3. Make a backup of `Act.dir` and `Act.img` in `(bully_game_directory)/Act/(here)`
+2. Move the `BMXTricks` folder to<br>
+   `(bully_game_directory)/_derpy_script_loader/scripts/(here)`
+3. Make a backup of `Act.dir` and `Act.img` in<br>
+   `(bully_game_directory)/Act/(here)`
 4. Move the `Act.dir` and `Act.img` files that came from this mod to that folder
 
 ### Bully Anniversary Edition
 
 1. Install MSR II
 2. Extract the mod file
-3. Move the `MOD_1.lur` file to `storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Scripts/MSR_II/GROUP_01_STC/`
-4. Move the `BMXTricks` folder to `storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Scripts/(here)`
-5. Make a backup of your `Act.dir` and `Act.img` in `storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Act/(here)` (If you already have a modified Act file from other mod)
+3. Move the `MOD_1.lur` file to<br>
+   `storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Scripts/MSR_II/GROUP_01_STC/`
+4. Move the `BMXTricks` folder to<br>
+   `storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Scripts/(here)`
+5. Make a backup of your `Act.dir` and `Act.img` in: (If you already have a modified Act file from other mod)<br>
+   `storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Act/(here)`
 6. Move the modded `Act.dir` and `Act.img` that comes from this mod to that folder
 
 ### Replacing the Act File Manually
