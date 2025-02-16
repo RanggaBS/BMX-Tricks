@@ -44,20 +44,20 @@ Bully Anniversary Edition touchscreen users are also supported. This mod also fi
 
 ### Replacing the Act File Manually
 
-This is only if you already have a modified Act.img file from other mod.
+This is only if you already have a modified `Act.img` file from other mod.
 
 #### PC
 
 1. Open the IMG Tool 2.0 executable
 2. File => Open => Navigate to the location of the Act.img file => Open
-3. Commands => Replace => Navigate to the location of Bikes.cat file from this mod => Open
+3. Commands => Replace => Navigate to the location of `Bikes.cat` file from this mod => Open
 4. Commands => Rebuild Archive
 
 #### Android
 
 1. Open the IMG Tool application
-2. Open IMG => Navigate to the location of the Act.img file => Select
-3. Add File(s) with replace => Navigate to the location of the Bikes.cat file from this mod => Select
+2. Open IMG => Navigate to the location of the `Act.img` file => Select
+3. Add File(s) with replace => Navigate to the location of the `Bikes.cat` file from this mod => Select
 4. Rebuild
 
 #### Bully AE Script Mod File Structure
