@@ -1,4 +1,4 @@
-# Me stuff
+# My stuff
 _DEV
 
 # Type definitions, for code completion
@@ -14,6 +14,8 @@ _release
 act/DB
 act/TEMPLATES
 act/*.py
+# IMG archive of SE and AE
+act/img
 # Ignore the compiled file
 act/*.cat
 
