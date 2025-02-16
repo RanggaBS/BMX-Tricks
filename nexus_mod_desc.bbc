@@ -1,0 +1,104 @@
+[size=3]
+[center][youtube]nCHdeTbna2Y[/youtube][/center]
+
+[size=6][b][center]Description[/center][/b][/size]
+Lost but not deleted. Bully has BMX trick animations that were never used. This mod finally lets you play it.
+
+Bully Anniversary Edition touchscreen users are also supported.
+
+[size=6][b][center]Requirements[/center][/b][/size]
+
+[size=5][b]Bully Scholarship Edition[/b][/size]
+
+[list]- Derpy Script Loader[/list]
+
+[size=5][b]Bully Anniversary Edition[/b][/size]
+
+[list]- More Scripts to Replace II (MSR I not tested)[/list]
+
+[size=6][b][center]Installation[/center][/b][/size]
+[size=5][b]Bully Scholarship Edition[/b][/size]
+
+[list=1]
+1. Install the latest version of Derpy Script Loader
+2. Move the [b]BMXTricks[/b] folder to [quote][code](bully_game_directory)/_derpy_script_loader/scripts/(here)[/code][/quote]
+3. Make a backup of [b]Act.dir[/b] and [b]Act.img[/b] in [quote][code](bully_game_directory)/Act/(here)[/code][/quote]
+4. Move the [b]Act.dir[/b] and [b]Act.img[/b] files that came from this mod to that folder
+[/list]
+
+[size=5][b]Bully Anniversary Edition[/b][/size]
+
+[list=1]
+1. Install MSR II
+2. Extract the mod file
+3. Move the [b]MOD_1.lur[/b] file to [quote][code]storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Scripts/MSR_II/GROUP_01_STC/(here)[/code][/quote]
+4. Move the [b]BMXTricks[/b] folder to [quote][code]storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Scripts/(here)[/code][/quote]
+5. Make a backup of your [b]Act.dir[/b] and [b]Act.img[/b] in [quote][code]storage/emulated/0/Android/data/com.rockstargames.bully/files/BullyOrig/Act/(here)[/code][/quote] (If you already have a modified Act file from other mod)
+6. Move the modded [b]Act.dir[/b] and [b]Act.img[/b] that comes from this mod to that folder
+[/list]
+
+[size=5][b]Replacing the Act File Manually[/b][/size]
+
+This is only if you already have a modified Act.img file from other mod.
+
+[size=4][b]PC[/b][/size]
+
+[list=1]
+1. Open the IMG Tool 2.0 executable
+2. File => Open => Navigate to the location of the Act.img file => Open
+3. Commands => Replace => Navigate to the location of Bikes.cat file from this mod => Open
+4. Commands => Rebuild Archive
+[/list]
+
+[size=4][b]Android[/b][/size]
+
+[list=1]
+1. Open the IMG Tool application
+2. Open IMG => Navigate to the location of the Act.img file => Select
+3. Add File(s) with replace => Navigate to the location of the Bikes.cat file from this mod => Select
+4. Rebuild
+[/list]
+
+[size=6][b][center]Bully AE Script Mod File Structure[/center][/b][/size]
+[quote][code]
+Scripts/
+├── BMXTricks/
+│   ├── config/
+│   │   └── ...
+│   ├── constants/
+│   │   └── ...
+│   ├── core/
+│   │   ├── trick_handlers/
+│   │   │   └── ...
+│   │   └── ...
+│   └── enums/
+│       └── ...
+└── MSR_II/
+    └── GROUP_01_STC/
+        ├── MOD_1.lur
+        ├── ...
+        └── MOD_5.lur
+[/code][/quote]
+
+[size=6][b][center]How to Tricks[/center][/b][/size]
+
+[center][youtube]vGITFgxbYRA[/youtube][/center]
+
+[size=6][b][center]Links[/center][/b][/size]
+
+[list]
+- [url=https://www.nexusmods.com/bullyscholarshipedition/mods/43]Derpy Script Loader[/url]
+- [url=http://youtube.com/post/UgkxfWkBF-wHg9PS4jQ4PKF-Z3LByiUikpS3?si=9xK9S_mRtTmjr8oS]More Scripts to Replace (MSR II)[/url]
+- [url=https://www.gtainside.com/en/sanandreas/tools/3852-img-tool-v2-0/]IMG Tool v2.0 (PC)[/url]
+- [url=https://play.google.com/store/apps/details?id=by.lsdsl.gta.imgtool&hl=en]GTA IMG Tool (Android)[/url]
+- [url=https://youtube.com/@rbsid]RBS ID YouTube Channel[/url]
+[/list]
+
+[size=6][b][center]Credits[/center][/b][/size]
+
+[list]
+- marcred for MACT Tool
+- derpy54320 for Derpy Script Loader
+- Altamurenza for More Scripts to Replace I and II
+[/list]
+[/size]
