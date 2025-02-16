@@ -96,6 +96,12 @@ https://www.nexusmods.com/bullyscholarshipedition/mods/43
 MSR II (More Scripts to Replace):<br>
 http://youtube.com/post/UgkxfWkBF-wHg9PS4jQ4PKF-Z3LByiUikpS3?si=9xK9S_mRtTmjr8oS
 
+IMG Tool v2.0 (PC):<br>
+https://www.gtainside.com/en/sanandreas/tools/3852-img-tool-v2-0/
+
+GTA IMG Tool (Android):<br>
+https://play.google.com/store/apps/details?id=by.lsdsl.gta.imgtool&hl=en
+
 RBS ID Youtube channel:<br>
 https://youtube.com/@rbsid
 
