@@ -49,16 +49,12 @@ local function IsEnoughSpeed(config)
 end
 
 frontnudgeTrickHandler:SetInitialTrickHandler(function(config)
-  if not VehicleFromDriver(gPlayer) or not IsEnoughSpeed(config) then
-    return
-  end
+  if not VehicleFromDriver(gPlayer) or not IsEnoughSpeed(config) then return end
 
   frontnudgeAnim = Const.Anim.FRONTNUDGE_BRAKE
 
   brake = config:GetSettingValue(brakeConfKey) --[[@as boolean]]
-  if not brake then
-    frontnudgeAnim = Const.Anim.FRONTNUDGE
-  end
+  if not brake then frontnudgeAnim = Const.Anim.FRONTNUDGE end
 
   Util.PlayAnimIfNotPlaying(frontnudgeAnim, Const.Anim.ACT_FILE)
   trackFreezeNodetime = Util.GetNodeTime()
@@ -70,9 +66,7 @@ local landConfKey, land = Enum.Config.POST_FRONTNUDGE_ANIM, false
 
 frontnudgeTrickHandler:SetEndingTrickHandler(function(config)
   -- If crashing
-  if not VehicleFromDriver(gPlayer) then
-    return
-  end
+  if not VehicleFromDriver(gPlayer) then return end
 
   -- PlayerStopAllActionControllers() -- bug
   Util.PlayAnim("/Global", "Act/Globals.act")
@@ -181,9 +175,7 @@ end)
 -- While frozen
 
 frontnudgeTrickHandler:SetKeyboardFreezeHandler(function(config)
-  if not IsEnoughSpeed(config) then
-    return false
-  end
+  if not IsEnoughSpeed(config) then return false end
 
   key = config:GetSettingValue(keyConfKey) --[[@as string]]
   keyCombination = config:GetSettingValue(keyCombinationConfKey) --[[@as string]]
@@ -217,9 +209,7 @@ local doubleTapTresholdConfKey = Enum.Config.CONTROLLER_DOUBLETAP_TRESHOLD
 local minStickValue, doubleTapTreshold, lastTap = 0, 0, 0
 
 frontnudgeTrickHandler:SetControllerInputCondition(function(config)
-  if not IsEnoughSpeed(config) then
-    return false
-  end
+  if not IsEnoughSpeed(config) then return false end
 
   minStickValue = config:GetSettingValue(minStickValueConfKey) --[[@as number]]
   doubleTapTreshold = config:GetSettingValue(doubleTapTresholdConfKey) --[[@as number]]
@@ -230,9 +220,7 @@ frontnudgeTrickHandler:SetControllerInputCondition(function(config)
     and IsButtonBeingPressed(Enum.Button.MeleeAttack, Enum.Controller.PLAYER1)
   then
     -- If the brake button is being pressed again under this treshold time
-    if GetTimer() < lastTap + doubleTapTreshold then
-      return true
-    end
+    if GetTimer() < lastTap + doubleTapTreshold then return true end
 
     lastTap = GetTimer()
   end
@@ -276,9 +264,7 @@ end)
 -- While frozen
 
 frontnudgeTrickHandler:SetControllerFreezeHandler(function(config)
-  if not IsEnoughSpeed(config) then
-    return false
-  end
+  if not IsEnoughSpeed(config) then return false end
 
   minStickValue = config:GetSettingValue(minStickValueConfKey) --[[@as number]]
   doubleTapTreshold = config:GetSettingValue(doubleTapTresholdConfKey) --[[@as number]]

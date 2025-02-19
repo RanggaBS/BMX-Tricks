@@ -56,9 +56,7 @@ local landConfKey, land = Enum.Config.POST_WHIPLASH_ANIM, false
 
 whiplashTrickHandler:SetEndingTrickHandler(function(config)
   -- If crashing
-  if not VehicleFromDriver(gPlayer) then
-    return
-  end
+  if not VehicleFromDriver(gPlayer) then return end
 
   -- PlayerStopAllActionControllers() -- bug
   Util.PlayAnim("/Global", "Act/Globals.act")
@@ -108,9 +106,7 @@ end)
 
 whiplashTrickHandler:SetKeyboardPlayingHandler(function(config)
   -- If crashing
-  if not VehicleFromDriver(gPlayer) then
-    return false
-  end
+  if not VehicleFromDriver(gPlayer) then return false end
 
   -- If not enough speed and still doing the trick
   nt = Util.GetNodeTime()
@@ -154,9 +150,7 @@ whiplashTrickHandler:SetKeyboardPlayingHandler(function(config)
     end
 
     -- While still performing the trick
-    if Util.IsPlaying(Const.Anim.WHIPLASH) then
-      return true
-    end
+    if Util.IsPlaying(Const.Anim.WHIPLASH) then return true end
 
     return false
   end
@@ -167,9 +161,7 @@ end)
 -- While frozen
 
 whiplashTrickHandler:SetKeyboardFreezeHandler(function(config)
-  if Util.ToKmPerHour(Util.GetBikeSpeed()) < minSpeed then
-    return false
-  end
+  if Util.ToKmPerHour(Util.GetBikeSpeed()) < minSpeed then return false end
 
   key = config:GetSettingValue(keyConfKey) --[[@as string]]
   keyCombination = config:GetSettingValue(keyCombinationConfKey) --[[@as string]]
@@ -207,21 +199,15 @@ local function DoubleTapTrickActivationHandler()
   while Util.GetVerticalStickValue() >= minStickValue do
     Wait(0)
 
-    if GetTimer() >= lastTap + doubleTapTreshold then
-      return false
-    end
+    if GetTimer() >= lastTap + doubleTapTreshold then return false end
 
     -- move your analog stick up a bit
     while Util.GetVerticalStickValue() < minStickValue do
       Wait(0)
-      if GetTimer() >= lastTap + doubleTapTreshold then
-        return false
-      end
+      if GetTimer() >= lastTap + doubleTapTreshold then return false end
 
       -- Third tap
-      if Util.GetVerticalStickValue() >= minStickValue then
-        return true
-      end
+      if Util.GetVerticalStickValue() >= minStickValue then return true end
     end
   end
 
@@ -278,9 +264,7 @@ end
 
 whiplashTrickHandler:SetControllerPlayingHandler(function(config)
   -- If crashing
-  if not VehicleFromDriver(gPlayer) then
-    return false
-  end
+  if not VehicleFromDriver(gPlayer) then return false end
 
   minStickValue = config:GetSettingValue(minStickValueConfKey) --[[@as number]]
   doubleTapTreshold = config:GetSettingValue(doubleTapTresholdConfKey) --[[@as number]]
