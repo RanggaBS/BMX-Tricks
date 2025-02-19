@@ -126,5 +126,4 @@ This project is licensed under the MIT License.
 ⚠ **DO NOT REUPLOAD OR REDISTRIBUTE THIS MOD** ⚠
 This mod is **only available through the official sources provided by the author**.
 Unauthorized reuploads or redistributions to other sites are **strictly prohibited**.
-
 ```
