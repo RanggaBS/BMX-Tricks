@@ -24885,4 +24885,24 @@ Bank Bikes
 			}
 		}
 	}
+
+	# --------------------------------------------------------------------------- #
+	# Nothing but watermark                                                       #
+	# --------------------------------------------------------------------------- #
+
+	Bank B_BMX_Tricks_mod_by_RBS_ID
+	{
+		ConditionGroup
+		{
+		}
+		Node N_BMX_Tricks_mod_by_RBS_ID
+		{
+			ConditionGroup
+			{
+			}
+			Tracks
+			{
+			}
+		}
+	}
 }
