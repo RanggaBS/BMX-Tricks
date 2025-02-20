@@ -250,9 +250,3 @@ end
 ---@alias TrickHandler_PlayingHandler fun(config: Config): TrickHandler_PlayingHandlerReturnValue
 ---Returns a boolean whether should back to perform the trick
 ---@alias TrickHandler_FreezeHandler fun(config: Config): TrickHandler_FreezeHandlerReturnValue
-
--- Developer signature
-function BMX_Tricks_mod_by_RBS_ID()
-  -- This function does nothing but serves as a watermark
-  return "You are not allowed to redistribute/re-upload this mod to anywhere else!"
-end

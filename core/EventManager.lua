@@ -34,9 +34,7 @@ end
 ---@param eventName EventName
 ---@param callback EventCallback
 function EventManager:AddListener(eventName, callback)
-  if not self.listeners[eventName] then
-    self.listeners[eventName] = {}
-  end
+  if not self.listeners[eventName] then self.listeners[eventName] = {} end
   table.insert(self.listeners[eventName], callback)
 end
 
@@ -68,9 +66,3 @@ end
 -- -------------------------------------------------------------------------- --
 
 BMXTRICKS_EventManager = EventManager
-
--- Developer signature
-function BMX_Tricks_mod_by_RBS_ID()
-  -- This function does nothing but serves as a watermark
-  return "You are not allowed to redistribute/re-upload this mod to anywhere else!"
-end
