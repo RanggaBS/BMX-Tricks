@@ -472,6 +472,11 @@ function BMXTrick:SetEnabled(enable)
     or Enum.Event.OnModDisabled
 
   self.eventManager:Emit(eventName)
+
+  if not Util.IsBullyAE() then
+    local prefix = "BMXTricks:"
+    RunLocalEvent(prefix .. eventName)
+  end
 end
 
 ---@return EventManager
